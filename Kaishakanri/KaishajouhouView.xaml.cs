@@ -35,6 +35,7 @@ namespace Kaishakanri
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
+            /////
 
         }
     }
