@@ -1,0 +1,14 @@
+﻿<Application x:Class="Kaishakanri.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" Source="Resources/ImplicitStylesResourceDictionary.xaml" />
+                <ResourceDictionary x:Uid="ResourceDictionary_3" Source="Resources/IconsResourceDictionary.xaml" />
+                <ResourceDictionary x:Uid="ResourceDictionary_4" Source="Resources/StylesResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

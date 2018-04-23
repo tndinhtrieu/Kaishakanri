@@ -1,0 +1,89 @@
+﻿<Window x:Class="Kaishakanri.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ViewMode="clr-namespace:Kaishakanri.ViewModels"
+        Title="MainWindow" 
+         WindowStartupLocation="CenterScreen"
+      
+      >
+    <Window.Resources>
+        <ViewMode:MainViewMode x:Key="MainViewMode" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource MainViewMode}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="．．．" Margin="2" Grid.Column="2" Command="{Binding ImportdataCommand}"/>
+                <TextBox Name="txtPath" Grid.Column="1"  Margin="1" IsEnabled="False" Text="{Binding Path}"/>
+                <TextBlock Text="Import" TextAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+            </Grid>
+            <DataGrid Name="GridMain" 
+                  Grid.Row="1" 
+                  ItemsSource="{Binding ListObj}" 
+                  AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" Visibility="Hidden"/>
+                    <DataGridTextColumn Width="*" Binding="{Binding Kaishaname}">
+                        <DataGridTextColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center">会社名</Label>
+                            </DataTemplate>
+                        </DataGridTextColumn.HeaderTemplate>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="*" Binding="{Binding Daihyoumei}">
+                        <DataGridTextColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center">代表名</Label>
+                            </DataTemplate>
+                        </DataGridTextColumn.HeaderTemplate>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="*" Binding="{Binding Denwa}">
+                        <DataGridTextColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center">電話</Label>
+                            </DataTemplate>
+                        </DataGridTextColumn.HeaderTemplate>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="*" Binding="{Binding Fax}">
+                        <DataGridTextColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center">ファックス</Label>
+                            </DataTemplate>
+                        </DataGridTextColumn.HeaderTemplate>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <Button Width="120" Margin="2" Content="Insert to database" Command="{Binding InsertTodatabaseCommand}"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="編集内容" Grid.Column="1">
+           
+            </GroupBox>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="2" >
+                <Button Name="btApply" Content="Apply" Width="120"/>
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+</Window>
